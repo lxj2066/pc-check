@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+  :root{--bg:#0b1220;--panel:#121a2b;--line:#24314a;--text:#e6edf3;--muted:#8b98ab;
+        --p0:#ff6b6b;--p1:#ffa94d;--p2:#4dabf7;--p3:#8b98ab;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 "Segoe UI","Microsoft YaHei",system-ui,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+  header{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:24px}
+  .eyebrow{color:var(--muted);letter-spacing:.18em;font-size:12px;text-transform:uppercase}
+  h1{font-size:30px;margin:6px 0 4px}
+  .sub{color:var(--muted);font-size:13px}
+  section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:18px 0}
+  h2{font-size:19px;margin:0 0 14px}
+  h3{font-size:15px;margin:18px 0 10px;color:#c9d4e3}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;white-space:nowrap}
+  table.kv th{width:120px}
+  .warn{color:var(--p1);font-weight:600}
+  .cards{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+  .card{flex:1 1 140px;border-radius:10px;padding:12px 14px;background:#0f1728;border:1px solid var(--line)}
+  .card .n{font-size:26px;font-weight:700}
+  .card .l{color:var(--muted);font-size:12px}
+  .card.p0 .n{color:var(--p0)} .card.p1 .n{color:var(--p1)}
+  .card.p2 .n{color:var(--p2)} .card.p3 .n{color:#c9d4e3}
+  .lead{font-size:16px;margin:0}
+  .badge{display:inline-block;padding:1px 7px;border-radius:999px;font-size:12px;font-weight:700;color:#0b1220;margin-right:8px}
+  .badge.p0{background:var(--p0)} .badge.p1{background:var(--p1)}
+  .badge.p2{background:var(--p2)} .badge.p3{background:var(--p3)}
+  .finding{border-left:3px solid var(--line);padding:10px 0 10px 14px;margin:10px 0}
+  .finding.p0{border-color:var(--p0)} .finding.p1{border-color:var(--p1)}
+  .finding.p2{border-color:var(--p2)} .finding.p3{border-color:var(--p3)}
+  .fh{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .meta{color:var(--muted);font-size:12px;margin-left:auto}
+  .fl{font-size:14px;color:#c9d4e3}
+  .fl b{color:var(--muted);font-weight:600}
+  .note{color:var(--muted);font-size:13px}
+  .bar{background:#0f1728;border-radius:6px;height:10px;overflow:hidden;min-width:160px}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,#4dabf7,#51cf66)}
+  table.bars td:first-child{width:90px}
+  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:30px}
+  @media(max-width:640px){h1{font-size:24px}section{padding:16px}}
+</style>
+</head>
+<body><div class="wrap">
+{{BODY}}
+</div></body></html>
