@@ -198,8 +198,14 @@ def check_storage(data, f, profile):
     ev = (data.get("events") or {}).get("disk_errors") or {}
     if num(ev.get("count"), 0) > 0:
         by_id = "、".join(f"ID {x.get('id')}×{x.get('count')}" for x in as_list(ev.get("by_id")))
+        by_day = as_list(ev.get("by_day"))
+        day_txt = ""
+        if by_day:
+            top = max(by_day, key=lambda x: num(x.get("count"), 0) or 0)
+            day_txt = f"，集中在 {top.get('day')}（{top.get('count')} 条）"
+        cap = "≥" if ev.get("capped") else ""
         f.add("STO-003", "P1", "磁盘 I/O 错误",
-              f"近 30 天 {ev.get('count')} 条（{by_id}）",
+              f"近 30 天 {cap}{ev.get('count')} 条{day_txt}（{by_id}）",
               "可能是数据线松动、供电不足或硬盘本身老化；严重时会掉盘/卡死。",
               "换 SATA 线/供电口；用 CrystalDiskInfo 看 SMART；必要时备份后更换。", "高")
 

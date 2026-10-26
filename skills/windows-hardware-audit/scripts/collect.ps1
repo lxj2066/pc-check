@@ -352,7 +352,9 @@ $diskEv = @()
 try { $diskEv = @(Get-WinEvent -FilterHashtable @{ LogName = 'System'; ProviderName = 'disk'; StartTime = (Get-Date).AddDays(-30) } -MaxEvents 5000 -ErrorAction Stop) } catch { }
 $result['events']['disk_errors'] = [ordered]@{
     count = @($diskEv).Count
+    capped = (@($diskEv).Count -ge 5000)
     by_id = @($diskEv | Group-Object Id | ForEach-Object { [ordered]@{ id = $_.Name; count = $_.Count } })
+    by_day = @($diskEv | Group-Object { $_.TimeCreated.ToString('yyyy-MM-dd') } | ForEach-Object { [ordered]@{ day = $_.Name; count = $_.Count } })
     items = @($diskEv | Select-Object -First 20 | ForEach-Object { [ordered]@{ time = $_.TimeCreated.ToString('yyyy-MM-dd HH:mm:ss'); id = $_.Id; message = (($_.Message -split "`r?`n")[0]) } })
 }
 $tdr = Get-EventList -Ids @(4101, 4102) -Days 30 -Max 30
